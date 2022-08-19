@@ -1,0 +1,47 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Unique ID",
+        "placeholder": "SEO-friendly unique identifier for URLs"
+      }
+    },
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "Dilemma title, used on the list and as a header"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 500,
+          "height": 500
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Description",
+        "placeholder": "Additional content shown on dilemma page"
+      }
+    },
+    "first_step": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["dilemma_step"],
+        "label": "First Step",
+        "placeholder": "The first step with which a dilemma begins"
+      }
+    }
+  }
+}

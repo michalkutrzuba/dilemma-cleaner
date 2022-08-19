@@ -1,0 +1,44 @@
+{
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "Step title shown in the header"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Description",
+        "placeholder": "Additional text shown below the header"
+      }
+    },
+    "choices": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "text": {
+            "type": "Text",
+            "config": {
+              "label": "Text",
+              "placeholder": "Text shown on a choice item"
+            }
+          },
+          "next_step": {
+            "type": "Link",
+            "config": {
+              "select": "document",
+              "customtypes": ["dilemma_step"],
+              "label": "Next Step",
+              "placeholder": "Step shown after selection, if empty step will be final"
+            }
+          }
+        },
+        "label": "Choices"
+      }
+    }
+  }
+}

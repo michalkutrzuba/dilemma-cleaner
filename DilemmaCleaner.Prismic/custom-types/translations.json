@@ -1,0 +1,112 @@
+{
+  "Shared": {
+    "author_send_email": {
+      "type": "Text",
+      "config": {
+        "label": "Author - Send Email",
+        "placeholder": "Send email to author text"
+      }
+    },
+    "author_open_linked_in": {
+      "type": "Text",
+      "config": {
+        "label": "Author - Open LinkedIn",
+        "placeholder": "Open author's LinkedIn text"
+      }
+    },
+    "footer_text": {
+      "type": "Text",
+      "config": {
+        "label": "Footer Text",
+        "placeholder": "Text shown in the middle of the footer"
+      }
+    }
+  },
+  "List": {
+    "list_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "Page header text"
+      }
+    },
+    "list_description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "Description",
+        "placeholder": "Additional text shown below the title"
+      }
+    },
+    "list_dilemmas_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title for dilemmas list",
+        "placeholder": "Text shown as a dilemmas list header"
+      }
+    }
+  },
+  "Dilemma": {
+    "dilemma_back_button": {
+      "type": "Text",
+      "config": {
+        "label": "Back Button",
+        "placeholder": "Back to list button text"
+      }
+    },
+    "dilemma_start_button": {
+      "type": "Text",
+      "config": {
+        "label": "Start Button",
+        "placeholder": "Start dilemma button text"
+      }
+    }
+  },
+  "Dilemma Step": {
+    "dilemma_step_finish_earlier_divider_label": {
+      "type": "Text",
+      "config": {
+        "label": "Finish Earlier Divider Label",
+        "placeholder": "Text shown on the divider between choices and finish earlier button"
+      }
+    },
+    "dilemma_step_finish_earlier_button": {
+      "type": "Text",
+      "config": {
+        "label": "Finish Earlier Button",
+        "placeholder": "Finish dilemma earlier button text"
+      }
+    }
+  },
+  "Dilemma Result": {
+    "dilemma_result_back_button": {
+      "type": "Text",
+      "config": {
+        "label": "Back Button",
+        "placeholder": "Back to list button text"
+      }
+    },
+    "dilemma_result_start_again_button": {
+      "type": "Text",
+      "config": {
+        "label": "Start Again Button",
+        "placeholder": "Start dilemma again button text"
+      }
+    },
+    "dilemma_result_show_flowchart_button": {
+      "type": "Text",
+      "config": {
+        "label": "Show Flowchart Button",
+        "placeholder": "Show complete flowchart button text"
+      }
+    },
+    "dilemma_result_hide_flowchart_button": {
+      "type": "Text",
+      "config": {
+        "label": "Hide Flowchart Button",
+        "placeholder": "Show flowchart with user's selection button text"
+      }
+    }
+  }
+}

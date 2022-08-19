@@ -1,0 +1,18 @@
+{
+  "Main": {
+    "author_email": {
+      "type": "Text",
+      "config": {
+        "label": "Author Email",
+        "placeholder": "If empty, email option won't be shown"
+      }
+    },
+    "author_linkedin": {
+      "type": "Text",
+      "config": {
+        "label": "Author LinkedIn",
+        "placeholder": "If empty, LinkedIn option won't be shown"
+      }
+    }
+  }
+}
