@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DilemmaCleaner.Api.Web", "DilemmaCleaner.Api.Web\DilemmaCleaner.Api.Web.csproj", "{53DD1470-2E6B-4E63-83D7-ECBC704B68CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DilemmaCleaner.Api.Tests", "DilemmaCleaner.Api.Tests\DilemmaCleaner.Api.Tests.csproj", "{8E27BB99-438E-4FA1-8F70-EE5071B6E4E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53DD1470-2E6B-4E63-83D7-ECBC704B68CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DD1470-2E6B-4E63-83D7-ECBC704B68CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DD1470-2E6B-4E63-83D7-ECBC704B68CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DD1470-2E6B-4E63-83D7-ECBC704B68CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E27BB99-438E-4FA1-8F70-EE5071B6E4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E27BB99-438E-4FA1-8F70-EE5071B6E4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E27BB99-438E-4FA1-8F70-EE5071B6E4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E27BB99-438E-4FA1-8F70-EE5071B6E4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
