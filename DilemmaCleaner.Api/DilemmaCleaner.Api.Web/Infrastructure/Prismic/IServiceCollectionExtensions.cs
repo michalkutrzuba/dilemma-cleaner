@@ -8,5 +8,6 @@ public static class IServiceCollectionExtensions
     {
         services.AddPrismic();
         services.Configure<PrismicSettings>(configuration.GetSection("PrismicSettings"));
+        services.AddSingleton<DocumentLinkResolver, DefaultDocumentLinkResolver>();
     }
 }
