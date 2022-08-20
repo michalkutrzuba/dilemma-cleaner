@@ -1,8 +1,7 @@
-using System.Diagnostics.CodeAnalysis;
+using prismic;
 
 namespace DilemmaCleaner.Api.Web.Infrastructure.Prismic;
 
-[SuppressMessage("ReSharper", "InconsistentNaming")]
 public static class IServiceCollectionExtensions
 {
     public static void AddPrismicDependencies(this IServiceCollection services, IConfigurationRoot configuration)
