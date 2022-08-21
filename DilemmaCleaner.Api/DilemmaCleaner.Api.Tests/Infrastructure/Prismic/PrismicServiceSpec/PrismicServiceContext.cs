@@ -15,6 +15,8 @@ public abstract class PrismicServiceContext : Specification
         PrismicMock = new Mock<IPrismicApiAccessor>();
         PrismicMock.Setup(prismic => prismic.GetApi()).ReturnsAsync(() => PrismicApi.Object);
 
-        Service = new PrismicService(PrismicMock.Object);
+        var documentLinkResolverMock = new Mock<DocumentLinkResolver>();
+
+        Service = new PrismicService(PrismicMock.Object, documentLinkResolverMock.Object);
     }
 }
