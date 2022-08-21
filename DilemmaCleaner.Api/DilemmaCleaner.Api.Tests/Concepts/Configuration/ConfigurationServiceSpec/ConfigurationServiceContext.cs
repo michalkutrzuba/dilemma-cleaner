@@ -12,6 +12,6 @@ public abstract class ConfigurationServiceContext : Specification
     {
         PrismicMock = new Mock<IPrismicService>();
 
-        Service = new ConfigurationService(PrismicMock.Object);
+        Service = new ConfigurationService(PrismicMock.Object, CacheManager);
     }
 }

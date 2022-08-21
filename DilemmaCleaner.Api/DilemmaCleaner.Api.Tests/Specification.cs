@@ -1,4 +1,5 @@
 using System.Globalization;
+using DilemmaCleaner.Api.Web.Infrastructure.Cache;
 
 namespace DilemmaCleaner.Api.Tests
 {
@@ -10,6 +11,8 @@ namespace DilemmaCleaner.Api.Tests
         protected virtual void AfterEach()
         {
         }
+
+        protected readonly ICacheManager CacheManager = new FakeCacheManager();
 
         protected bool ScenarioExceptionsExpected;
         protected Exception ScenarioException;
