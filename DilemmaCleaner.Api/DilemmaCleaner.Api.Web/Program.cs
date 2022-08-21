@@ -1,4 +1,5 @@
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic;
+using ExceptionHandlerMiddleware = DilemmaCleaner.Api.Web.Infrastructure.Middlewares.ExceptionHandlerMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.MapControllers();
 
