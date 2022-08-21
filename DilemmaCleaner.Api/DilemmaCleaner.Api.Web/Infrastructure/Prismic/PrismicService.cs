@@ -1,4 +1,5 @@
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Documents;
+using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Exceptions;
 using prismic;
 
 namespace DilemmaCleaner.Api.Web.Infrastructure.Prismic;
@@ -25,6 +26,9 @@ public class PrismicService : IPrismicService
         var api = await _prismic.GetApi();
         var document = await api.QueryFirst(Predicates.At("document.type", CustomType.Settings));
 
+        if (document is null)
+            throw new MissingPrismicDocumentException(CustomType.Settings);
+
         var settingsDocument = new SettingsDocument(
             document.GetText($"{document.Slug}.author_email"),
             document.GetText($"{document.Slug}.author_linkedin")
@@ -37,6 +41,9 @@ public class PrismicService : IPrismicService
     {
         var api = await _prismic.GetApi();
         var document = await api.QueryFirst(Predicates.At("document.type", CustomType.Translations));
+
+        if (document is null)
+            throw new MissingPrismicDocumentException(CustomType.Translations);
 
         var shared = new TranslationsDocumentShared(
             new TranslationsDocumentSharedAuthor(

@@ -1,4 +1,5 @@
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Documents;
+using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Exceptions;
 using prismic;
 
 namespace DilemmaCleaner.Api.Tests.Infrastructure.Prismic.PrismicServiceSpec.GetSettings;
@@ -67,7 +68,42 @@ public class when_api_does_not_return_document : GetSettingsContext
     [Test]
     public void it_should_throw_exception()
     {
-        ScenarioException.Should().BeOfType<NullReferenceException>();
+        ScenarioException.Should().BeOfType<MissingPrismicDocumentException>();
+        ScenarioException.Message.Should().Be("Document of custom type: settings was not found.");
+    }
+}
+
+[Explicit(@"prismic.API cannot be mocked. It would be great to wrap this code to test it 
+properly but I will do this in my spare time. I left this test just to show how test might look.")]
+public class when_api_throws_error : GetSettingsContext
+{
+    protected override void EstablishContext()
+    {
+        base.EstablishContext();
+
+        ScenarioExceptionsExpected = true;
+
+        PrismicApi
+            .Setup(api => api.QueryFirst(It.Is<Predicate>(predicate => predicate.Q() == "content type is Settings"), null, null))
+            .ThrowsAsync(new Exception("testException"));
+    }
+
+    protected override void BecauseOf()
+    {
+        Result = Service.GetSettings().Result;
+    }
+
+    [Test]
+    public void it_should_not_return_anything()
+    {
+        Result.Should().BeNull();
+    }
+
+    [Test]
+    public void it_should_throw_exception()
+    {
+        ScenarioException.Should().BeOfType<Exception>();
+        ScenarioException.Message.Should().Be("testException");
     }
 }
 
