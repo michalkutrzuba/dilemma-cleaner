@@ -1,3 +1,4 @@
+using DilemmaCleaner.Api.Web.Concepts;
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic;
 using ExceptionHandlerMiddleware = DilemmaCleaner.Api.Web.Infrastructure.Middlewares.ExceptionHandlerMiddleware;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPrismicDependencies(builder.Configuration);
+builder.Services.AddConcepts();
 
 var app = builder.Build();
 
