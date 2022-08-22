@@ -20,4 +20,10 @@ public class DilemmasController : ControllerBase
     {
         return await _dilemmasService.GetList();
     }
+
+    [HttpGet("{uid}")]
+    public async Task<DilemmaModel> GetDilemmas(string uid)
+    {
+        return await _dilemmasService.Get(uid);
+    }
 }

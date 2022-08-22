@@ -7,6 +7,7 @@ namespace DilemmaCleaner.Api.Web.Concepts.Dilemmas;
 public interface IDilemmasService
 {
     Task<DilemmasListModel> GetList();
+    Task<DilemmaModel> Get(string uid);
 }
 
 public class DilemmasService : IDilemmasService
@@ -25,5 +26,10 @@ public class DilemmasService : IDilemmasService
         var dilemmasDocument = await _prismicService.GetDilemmasList();
 
         return dilemmasDocument.ToModel();
+    });
+
+    public async Task<DilemmaModel> Get(string uid) => await _cache.Get<DilemmaModel>($"dilemma_{uid}", async () =>
+    {
+        throw new NotImplementedException();
     });
 }
