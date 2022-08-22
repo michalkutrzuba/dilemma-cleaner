@@ -7,6 +7,8 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.34.0",
     "@typescript-eslint/parser": "^5.34.0",
     "@vue/eslint-config-standard": "^8.0.1",
@@ -15,7 +17,7 @@
     "eslint-plugin-nuxt": "^3.2.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.3.0",
-    "nuxt": "3.0.0-rc.8",
+    "nuxt": "npm:nuxt3@latest",
     "prettier": "^2.7.1",
     "sass": "^1.54.5",
     "sass-loader": "^13.0.2",
