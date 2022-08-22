@@ -20,8 +20,10 @@ public class DilemmasService : IDilemmasService
         _cache = cache;
     }
 
-    public async Task<DilemmasListModel> GetList() => await _cache.Get<DilemmasListModel>("dilemmas", async () =>
+    public async Task<DilemmasListModel> GetList() => await _cache.Get("dilemmas", async () =>
     {
-        throw new NotImplementedException();
+        var dilemmasDocument = await _prismicService.GetDilemmasList();
+
+        return dilemmasDocument.ToModel();
     });
 }

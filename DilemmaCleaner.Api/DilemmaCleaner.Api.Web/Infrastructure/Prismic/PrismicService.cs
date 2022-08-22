@@ -1,6 +1,7 @@
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Documents;
 using DilemmaCleaner.Api.Web.Infrastructure.Prismic.Exceptions;
 using prismic;
+using prismic.fragments;
 
 namespace DilemmaCleaner.Api.Web.Infrastructure.Prismic;
 
@@ -8,6 +9,7 @@ public interface IPrismicService
 {
     Task<SettingsDocument> GetSettings();
     Task<TranslationsDocument> GetTranslations();
+    Task<DilemmasDocument> GetDilemmasList();
 }
 
 public class PrismicService : IPrismicService
@@ -85,5 +87,29 @@ public class PrismicService : IPrismicService
         );
 
         return translationsDocument;
+    }
+
+    public async Task<DilemmasDocument> GetDilemmasList()
+    {
+        var api = await _prismic.GetApi();
+        var documents = await api
+            .Query(Predicates.At("document.type", CustomType.Dilemma))
+            .Submit();
+
+        var items = documents.Results.Select(document =>
+        {
+            var image = document.GetImageView($"{CustomType.Dilemma}.image", "main");
+
+            var dilemmaDocument = new DilemmasDocumentItem(
+                document.Uid,
+                document.GetText($"{CustomType.Dilemma}.title"),
+                image.Url,
+                image.Alt
+            );
+
+            return dilemmaDocument;
+        });
+
+        return new DilemmasDocument(items);
     }
 }
