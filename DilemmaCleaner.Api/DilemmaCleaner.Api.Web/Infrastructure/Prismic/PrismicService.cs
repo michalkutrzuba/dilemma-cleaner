@@ -10,6 +10,7 @@ public interface IPrismicService
     Task<SettingsDocument> GetSettings();
     Task<TranslationsDocument> GetTranslations();
     Task<DilemmasDocument> GetDilemmasList();
+    Task<DilemmaDocument> GetDilemma(string uid);
 }
 
 public class PrismicService : IPrismicService
@@ -111,5 +112,61 @@ public class PrismicService : IPrismicService
         });
 
         return new DilemmasDocument(items);
+    }
+
+    public async Task<DilemmaDocument> GetDilemma(string uid)
+    {
+        var api = await _prismic.GetApi();
+        var document = await api.GetByUID(CustomType.Dilemma, uid);
+
+        var stepDocuments = new List<DilemmaDocumentStep>();
+        var image = document.GetImageView($"{CustomType.Dilemma}.image", "main");
+        var firstStep = (DocumentLink)document.Get($"{CustomType.Dilemma}.first_step");
+
+        await ResolveStep(firstStep.Id);
+
+        var dilemmaDocument = new DilemmaDocument(
+            document.Uid,
+            document.GetText($"{CustomType.Dilemma}.title"),
+            image.Url,
+            image.Alt,
+            document.GetStructuredText($"{CustomType.Dilemma}.description").AsHtml(_documentLinkResolver),
+            firstStep.Id,
+            stepDocuments
+        );
+
+        return dilemmaDocument;
+
+        // local functions
+
+        async Task ResolveStep(string id)
+        {
+            if (stepDocuments.Any(stepDocument => stepDocument.Id == id)) return;
+
+            var step = await api.GetByID(id);
+            var choices = step.GetGroup($"{CustomType.DilemmaStep}.choices").GroupDocs ?? new List<GroupDoc>();
+            var choiceDocuments = choices
+                .Where(choice => choice.Fragments.Any())
+                .Select(choice =>
+                {
+                    var nextStep = (DocumentLink)choice.Get("next_step");
+                    return new DilemmaDocumentStepChoice(choice.GetText("text"), nextStep.Id);
+                })
+                .ToList();
+
+            var stepDocument = new DilemmaDocumentStep(
+                step.Id,
+                step.GetText($"{CustomType.DilemmaStep}.title"),
+                step.GetStructuredText($"{CustomType.DilemmaStep}.description")?.AsHtml(_documentLinkResolver) ?? string.Empty,
+                choiceDocuments
+            );
+
+            stepDocuments.Add(stepDocument);
+
+            foreach (var choiceDocument in choiceDocuments)
+            {
+                await ResolveStep(choiceDocument.NextStepId);
+            }
+        }
     }
 }

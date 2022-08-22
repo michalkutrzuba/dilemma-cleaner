@@ -28,8 +28,10 @@ public class DilemmasService : IDilemmasService
         return dilemmasDocument.ToModel();
     });
 
-    public async Task<DilemmaModel> Get(string uid) => await _cache.Get<DilemmaModel>($"dilemma_{uid}", async () =>
+    public async Task<DilemmaModel> Get(string uid) => await _cache.Get($"dilemma_{uid}", async () =>
     {
-        throw new NotImplementedException();
+        var dilemmaDocument = await _prismicService.GetDilemma(uid);
+
+        return dilemmaDocument.ToModel();
     });
 }
