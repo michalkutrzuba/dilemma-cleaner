@@ -1,5 +1,8 @@
 <template>
   <div class="layout">
+    <div class="layout__content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -14,3 +17,17 @@ onMounted(async () => {
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1024px;
+
+  &__content {
+    flex-grow: 2;
+  }
+}
+</style>
