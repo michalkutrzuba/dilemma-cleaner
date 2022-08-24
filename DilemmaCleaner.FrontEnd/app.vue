@@ -19,4 +19,5 @@ onMounted(async () => {
 
 <style lang="scss">
 @import 'assets/styles/normalize.scss';
+@import 'assets/styles/main.scss';
 </style>
