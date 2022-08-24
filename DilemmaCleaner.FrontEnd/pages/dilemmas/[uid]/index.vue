@@ -18,10 +18,12 @@
 <script lang="ts" setup>
 import { DilemmaModel, useDilemmasStore } from '~/store/dilemmas'
 import { TranslationsModelDilemmaPage, useConfigurationStore } from '~/store/configuration'
+import { useUserSelectionsStore } from '~/store/userSelections'
 
 const configurationStore = useConfigurationStore()
 const translations = computed<TranslationsModelDilemmaPage>(() => configurationStore.translations.dilemma.page)
 
+const userSelectionsStore = useUserSelectionsStore()
 const router = useRouter()
 const route = useRoute()
 const uid = computed<string>(() => route.params.uid as string)
@@ -33,6 +35,7 @@ const model = computed<DilemmaModel>(() => dilemmasStore.current!)
 onMounted(async () => {
   if (isLoading) {
     dilemmasStore.current = null
+    userSelectionsStore.clear()
     await dilemmasStore.fetchByUid(uid.value)
   }
 })
@@ -42,6 +45,7 @@ function onBack() {
 }
 
 function onStart() {
+  userSelectionsStore.push(model.value.firstStepId)
   router.push({ path: `/dilemmas/${uid.value}/${model.value.firstStepId}` })
 }
 </script>
