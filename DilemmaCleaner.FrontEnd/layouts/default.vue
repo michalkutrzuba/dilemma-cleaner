@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    <AppHeader />
     <div class="layout__content">
       <slot></slot>
     </div>
