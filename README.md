@@ -18,6 +18,8 @@ To run the project, in the root FE folder please run:
   
 `yarn install` & `yarn dev`  
 
+In case of any issues, please contact me, I will do my best to help.
+
 ## Prismic Credentials
   
 https://prismic.io/  
