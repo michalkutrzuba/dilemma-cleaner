@@ -1,7 +1,8 @@
 <template>
   <div class="app">
-    <NuxtLayout>
+    <NuxtLayout v-if="!isLoading">
     </NuxtLayout>
+    <AppFullPageLoader v-else />
   </div>
 </template>
 
@@ -9,6 +10,8 @@
 import { useConfigurationStore } from '~/store/configuration'
 
 const configurationStore = useConfigurationStore()
+
+const isLoading = computed<boolean>(() => !configurationStore.configuration)
 
 onMounted(async () => {
   if (!configurationStore.configuration) {
