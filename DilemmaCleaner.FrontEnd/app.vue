@@ -16,3 +16,7 @@ onMounted(async () => {
   }
 })
 </script>
+
+<style lang="scss">
+@import 'assets/styles/normalize.scss';
+</style>
