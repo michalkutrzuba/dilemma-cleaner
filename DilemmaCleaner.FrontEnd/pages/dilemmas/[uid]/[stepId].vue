@@ -10,6 +10,9 @@
         </div>
       </div>
     </template>
+    <template v-else>
+      <a class="step__results" @click="goToResults">Show Results</a>
+    </template>
   </div>
 </template>
 
@@ -74,6 +77,20 @@ function goToResults() {
         font-weight: 900;
         background-color: $color-accent;
       }
+    }
+  }
+
+  &__results {
+    margin-top: 20px;
+    background-color: $color-primary;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 900;
+      background-color: $color-secondary;
     }
   }
 }
