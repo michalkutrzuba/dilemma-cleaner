@@ -15,8 +15,10 @@
 
 <script lang="ts" setup>
 import { DilemmaModelStep, useDilemmasStore } from '~/store/dilemmas'
+import { useUserSelectionsStore } from '~/store/userSelections'
 
 const dilemmasStore = useDilemmasStore()
+const userSelections = useUserSelectionsStore()
 
 const router = useRouter()
 const route = useRoute()
@@ -26,7 +28,12 @@ const isFinalStep = computed<boolean>(() => model.value.choices.length === 0)
 const hasDescription = computed<boolean>(() => model.value.descriptionHtml.length > 0)
 
 function goToNext(nextStepId: string) {
+  userSelections.push(nextStepId)
   router.push({ path: `/dilemmas/${route.params.uid as string}/${nextStepId}` })
+}
+
+function goToResults() {
+  router.push({ path: `/dilemmas/${route.params.uid as string}/results` })
 }
 </script>
 
