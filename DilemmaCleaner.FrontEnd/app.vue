@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <NuxtLayout v-if="!isLoading">
+      <NuxtPage />
     </NuxtLayout>
     <AppFullPageLoader v-else />
   </div>
