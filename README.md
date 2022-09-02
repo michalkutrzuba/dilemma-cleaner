@@ -1,7 +1,7 @@
 # dilemma-cleaner
 
 ## Few words about this project
-The goal was to create an app which helps users making decissions.  
+The goal was to create an app that helps users make decisions.  
   
 Project areas:
 * Prismic - headless CMS which is used in project, provides settings, translations and dilemmas setup
@@ -10,7 +10,7 @@ Project areas:
 
 Everything done by me in this solution was made from scratch specially for this project.  
   
-Project still needs to be developed to cover all missing features (like FE error handling) and catch up all bugs (e.g. page reload on step cause errors). Hovewer in my opinion it is good enough to be delivered as a test assestment. In the end, better is the enemy of good ;).
+Project still needs to be developed to cover all missing features (like FE error handling) and catch up all bugs (e.g. page reload on step cause errors). Hovewer in my opinion it is good enough to be delivered as an example of my workflow and my code example. In the end, better is the enemy of good ;).
 
 ## Front End
   
